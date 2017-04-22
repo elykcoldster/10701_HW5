@@ -1,5 +1,6 @@
 import numpy as np
 from sklearn.svm import SVC
+from datetime import datetime
 
 def load_file(filename='data.train'):
 
@@ -25,5 +26,13 @@ test_labels, test_data = load_file('data.test')
 linearSVM = SVC(kernel='linear')
 rbfSVM = SVC(kernel='rbf', gamma=0.2)
 
+startTime = datetime.now()
 linearSVM.fit(train_data, train_labels)
+print('Linear Kernel Runtime:', datetime.now() - startTime)
+
+startTime = datetime.now()
 rbfSVM.fit(train_data, train_labels)
+print('RBF Kernel Runtime:', datetime.now() - startTime)
+
+print('Linear Kernel Test Accuracy:', linearSVM.score(test_data, test_labels))
+print('RBF Kernel Test Accuracy:', rbfSVM.score(test_data, test_labels))
