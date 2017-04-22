@@ -11,11 +11,11 @@ rbfSVM = SVC(kernel='rbf', gamma=0.2)
 
 startTime = datetime.now()
 linearSVM.fit(train_data, train_labels)
-print('Linear Kernel Runtime:', datetime.now() - startTime)
+print('Linear Kernel Runtime:', (datetime.now() - startTime).total_seconds() * 1000)
 
 startTime = datetime.now()
 rbfSVM.fit(train_data, train_labels)
-print('RBF Kernel Runtime:', datetime.now() - startTime)
+print('RBF Kernel Runtime:', (datetime.now() - startTime).total_seconds() * 1000)
 
 print('Linear Kernel Test Accuracy:', linearSVM.score(test_data, test_labels))
 print('RBF Kernel Test Accuracy:', rbfSVM.score(test_data, test_labels))
